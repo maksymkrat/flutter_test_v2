@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,11 +11,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-
-
   List<String> todoList = [];
   String _userToDo = "";
+
+  void initFirebase() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+  }
 
   void setList() async {
     var prefs = await SharedPreferences.getInstance();
@@ -35,6 +39,29 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     updateToDoList();
+    initFirebase();
+  }
+
+  void _menuOpen(){
+  Navigator.of(context).push(
+    MaterialPageRoute(builder: (BuildContext context){
+      return Scaffold(
+        appBar: AppBar(title: Text('Menu'),),
+        body: Row(
+          children: [
+            ElevatedButton(onPressed: (){
+              Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+            }, child: Text('main')),
+            Padding(padding: EdgeInsets.only(left: 15)),
+            ElevatedButton(onPressed: (){}, child: Text('about')),
+            Padding(padding: EdgeInsets.only(left: 15)),
+            ElevatedButton(onPressed: (){}, child: Text('something more')),
+          ],
+        ),
+      );
+    })
+  );
   }
 
   @override
@@ -44,6 +71,11 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("to do list"),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){
+            _menuOpen();
+          }, icon: Icon(Icons.menu))
+        ],
         backgroundColor: Colors.amber,
       ),
       body: ListView.builder(
