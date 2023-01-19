@@ -54,10 +54,18 @@ class _HomeState extends State<Home> {
               Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
             }, child: Text('main')),
             Padding(padding: EdgeInsets.only(left: 15)),
+
             ElevatedButton(onPressed: (){
               Navigator.pop(context);
               Navigator.pushNamedAndRemoveUntil(context, '/tododb', (route) => false);
-            }, child: Text('firebase page'))
+            }, child: Text('firebase page')),
+
+            Padding(padding: EdgeInsets.only(left: 15)),
+            ElevatedButton(onPressed: (){
+              Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(context, '/test1', (route) => true);
+            }, child: Text('test1')),
+
           ],
         ),
       );

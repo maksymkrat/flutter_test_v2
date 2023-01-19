@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+import  'package:flutter/material.dart';
 import 'package:flutter_test_v2/pages/home.dart';
 import 'package:flutter_test_v2/pages/home_fb_db.dart';
 import 'package:flutter_test_v2/pages/main_screen.dart';
+import 'package:flutter_test_v2/pages/test1.dart';
 
 
 
@@ -13,6 +14,7 @@ void main() =>runApp(MaterialApp(
   routes: {
     '/' : (context) =>  MainScreen(),
     '/todo' : (context) =>  Home(),
-    '/tododb' : (context) =>  HomeFBDB()
+    '/tododb' : (context) =>  HomeFBDB(),
+    '/test1' : (context) =>  Test1()
   },
 ));

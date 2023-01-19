@@ -14,12 +14,25 @@ class MainScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text('Main screen', style: TextStyle(color: Colors.white),),
-            ElevatedButton(onPressed: () {
-              Navigator.pushNamed(context, '/todo');
-              //Navigator.pushNamedAndRemoveUntil(context, '/todo', (route) => false);
-              //Navigator.pushReplacementNamed(context, '/todo');
-            }, child: Text('move on'))
+            Text(
+              'Main screen',
+              style: TextStyle(color: Colors.white),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/todo');
+                  //Navigator.pushNamedAndRemoveUntil(context, '/todo', (route) => false);
+                  //Navigator.pushReplacementNamed(context, '/todo');
+                },
+                child: Text('move on')),
+            Padding(padding: EdgeInsets.only(left: 15)),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/test1', (route) => true);
+                },
+                child: Text('test1')),
           ],
         ));
   }
