@@ -25,14 +25,22 @@ class MainScreen extends StatelessWidget {
                   //Navigator.pushReplacementNamed(context, '/todo');
                 },
                 child: Text('move on')),
+
             Padding(padding: EdgeInsets.only(left: 15)),
             ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/test1', (route) => true);
+                  Navigator.pushNamed(context, '/loader');
                 },
-                child: Text('test1')),
+                child: Text('loader')),
+
+            Padding(padding: EdgeInsets.only(left: 15)),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/img');
+                },
+                child: Text('img')),
           ],
         ));
   }

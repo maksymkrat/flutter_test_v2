@@ -63,8 +63,14 @@ class _HomeState extends State<Home> {
             Padding(padding: EdgeInsets.only(left: 15)),
             ElevatedButton(onPressed: (){
               Navigator.pop(context);
-              Navigator.pushNamedAndRemoveUntil(context, '/test1', (route) => true);
-            }, child: Text('test1')),
+              Navigator.pushNamedAndRemoveUntil(context, '/loader', (route) => true);
+            }, child: Text('loader')),
+
+            Padding(padding: EdgeInsets.only(left: 15)),
+            ElevatedButton(onPressed: (){
+              Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(context, '/img', (route) => true);
+            }, child: Text('img')),
 
           ],
         ),
